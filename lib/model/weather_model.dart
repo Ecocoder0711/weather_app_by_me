@@ -1,31 +1,5 @@
-class ConditionWeatherModel {
-  final String main;
-  final String description;
-
-  ConditionWeatherModel({required this.main, required this.description});
-}
-
-class MainWeatherModel {
-  final double temp;
-  final double fealsLike;
-  final double tempMin;
-  final double tempMax;
-  final int pressure;
-  final int humidiy;
-  final int seaLevel;
-  final int grndLevel;
-
-  MainWeatherModel({
-    required this.temp,
-    required this.fealsLike,
-    required this.tempMin,
-    required this.tempMax,
-    required this.pressure,
-    required this.humidiy,
-    required this.seaLevel,
-    required this.grndLevel,
-  });
-}
+import 'package:weather_app/model/condition_weathermodel.dart';
+import 'package:weather_app/model/main_weathermodel.dart';
 
 class WeatherModel {
   final String cityName;
@@ -39,4 +13,10 @@ class WeatherModel {
     required this.condition,
     required this.main,
   });
+
+  WeatherModel.fromJson(Map<String, dynamic> json)
+    : cityName = json['name'],
+      countryName = json['sys']['country'],
+      condition = ConditionWeatherModel.fromJson(json),
+      main = MainWeatherModel.fromJson(json);
 }

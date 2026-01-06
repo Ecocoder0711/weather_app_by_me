@@ -1,21 +1,25 @@
 class MainWeatherModel {
   final double temp;
-  final double fealsLike;
+  final double feelsLike;
   final double tempMin;
   final double tempMax;
   final int pressure;
   final int humidiy;
-  final int seaLevel;
-  final int grndLevel;
 
   MainWeatherModel({
     required this.temp,
-    required this.fealsLike,
+    required this.feelsLike,
     required this.tempMin,
     required this.tempMax,
     required this.pressure,
     required this.humidiy,
-    required this.seaLevel,
-    required this.grndLevel,
   });
+
+  MainWeatherModel.fromJson(Map<String, dynamic> json)
+    : temp = json['temp'].toDouble(),
+      feelsLike = json['feels_likes'].toDouble(),
+      tempMin = json['temp_min'].toDouble(),
+      tempMax = json['temp_max'].toDouble(),
+      pressure = json['pressure'],
+      humidiy = json['humidity'];
 }

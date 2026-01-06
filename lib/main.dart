@@ -3,5 +3,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/runapp.dart';
 
 void main() {
-  runApp(ProviderScope(child: const WeatherApp()));
+  runApp(ProviderScope(child: WeatherApp()));
 }
