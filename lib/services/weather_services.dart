@@ -16,14 +16,19 @@ class WeatherServices {
     // Response (json)
     // Conditionaly data fetch (status == 200)
     try {
-      String url = '$baseUrl/weather?q=$cityname&appid= $apiId&units=metric';
+      String url = '$baseUrl/weather?q=$cityname&appid=$apiId&units=metric';
       http.Response response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
         // success state
-        var jsonData = jsonDecode(response.body);
+        Map<String, dynamic> jsonData =
+            jsonDecode(response.body) as Map<String, dynamic>;
         //
         return WeatherModel.fromJson(jsonData);
-      } else {}
-    } catch (e) {}
+      } else {
+        throw Exception("Failed to load weather data");
+      }
+    } catch (e) {
+      throw Exception("Error: $e");
+    }
   }
 }

@@ -5,11 +5,7 @@ class WeatherState {
   final String errorMessage;
   final WeatherModel? weather;
 
-  WeatherState({
-    required this.isLoading,
-    required this.errorMessage,
-    this.weather,
-  });
+  WeatherState({this.isLoading = false, this.errorMessage = '', this.weather});
 
   WeatherState copyWith({
     bool? isLoading,

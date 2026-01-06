@@ -5,6 +5,6 @@ class ConditionWeatherModel {
   ConditionWeatherModel({required this.main, required this.description});
 
   ConditionWeatherModel.fromJson(Map<String, dynamic> json)
-    : main = json['weather']['main'],
-      description = json['weather']['description'];
+    : main = json['main'],
+      description = json['description'];
 }

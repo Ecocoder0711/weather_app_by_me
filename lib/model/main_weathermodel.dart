@@ -16,10 +16,10 @@ class MainWeatherModel {
   });
 
   MainWeatherModel.fromJson(Map<String, dynamic> json)
-    : temp = json['temp'].toDouble(),
-      feelsLike = json['feels_likes'].toDouble(),
-      tempMin = json['temp_min'].toDouble(),
-      tempMax = json['temp_max'].toDouble(),
+    : temp = (json['temp'] as num).toDouble(),
+      feelsLike = (json['feels_like'] as num).toDouble(),
+      tempMin = (json['temp_min'] as num).toDouble(),
+      tempMax = (json['temp_max'] as num).toDouble(),
       pressure = json['pressure'],
       humidiy = json['humidity'];
 }

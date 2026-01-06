@@ -17,6 +17,6 @@ class WeatherModel {
   WeatherModel.fromJson(Map<String, dynamic> json)
     : cityName = json['name'],
       countryName = json['sys']['country'],
-      condition = ConditionWeatherModel.fromJson(json),
-      main = MainWeatherModel.fromJson(json);
+      condition = ConditionWeatherModel.fromJson(json['weather'][0]),
+      main = MainWeatherModel.fromJson(json['main']);
 }
