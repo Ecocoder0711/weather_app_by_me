@@ -15,7 +15,7 @@ class WeatherState {
     return WeatherState(
       isLoading: isLoading ?? this.isLoading,
       errorMessage: errorMessage ?? this.errorMessage,
-      weather: weather ?? this.weather,
+      weather: weather,
     );
   }
 }

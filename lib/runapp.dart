@@ -9,7 +9,7 @@ class WeatherApp extends StatelessWidget {
     return MaterialApp(
       title: "Weather App",
       debugShowCheckedModeBanner: false,
-      home: Homesceen(),
+      home: HomeSceen(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: 'Arial',
