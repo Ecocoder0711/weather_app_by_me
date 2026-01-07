@@ -22,6 +22,55 @@ class _HomesceenState extends ConsumerState<HomeSceen> {
     super.dispose();
   }
 
+  Widget _buildDetailCard({
+    required IconData icon,
+    required String title,
+    required String value,
+    required Color color,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: color.withValues(alpha: 0.3),
+        //     spreadRadius: 2,
+        //     blurRadius: 12,
+        //     offset: const Offset(0, 2),
+        //   ),
+        // ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, color: color, size: 20),
+          SizedBox(height: 4),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+          SizedBox(height: 2),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 12,
+              color: color,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final weatherState = ref.watch(weatherProvider);
@@ -205,10 +254,87 @@ class _HomesceenState extends ConsumerState<HomeSceen> {
                   ],
                 ),
               ),
+            if (weatherState.weather != null)
+              Container(
+                width: 375,
+                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withValues(alpha: 0.2),
+                      spreadRadius: 2,
+                      blurRadius: 8,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Weather Details",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.blue,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    GridView.count(
+                      crossAxisCount: 2,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      childAspectRatio: 1.5,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      children: [
+                        _buildDetailCard(
+                          icon: Icons.thermostat,
+                          title: 'Min Temp',
+                          value: '${weatherState.weather!.main.tempMin}°C',
+                          color: Colors.blue,
+                        ),
+                        _buildDetailCard(
+                          icon: Icons.thermostat,
+                          title: 'Max Temp',
+                          value: '${weatherState.weather!.main.tempMax}°C',
+                          color: Colors.orange[400]!,
+                        ),
+                        _buildDetailCard(
+                          icon: Icons.water_drop,
+                          title: 'Humidity',
+                          value: '${weatherState.weather!.main.humidiy}%',
+                          color: const Color.fromARGB(255, 31, 178, 161),
+                        ),
+                        _buildDetailCard(
+                          icon: Icons.speed_outlined,
+                          title: 'Pressure',
+                          value: '${weatherState.weather!.main.pressure}pa',
+                          color: Colors.purple,
+                        ),
+                        _buildDetailCard(
+                          icon: Icons.cloud,
+                          title: 'Condition',
+                          value: weatherState.weather!.condition.description,
+                          color: Colors.green,
+                        ),
+                        _buildDetailCard(
+                          icon: Icons.favorite,
+                          title: 'Feels Like',
+                          value: '${weatherState.weather!.main.feelsLike}°C',
+                          color: Colors.redAccent,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
           ],
         ),
       ),
     );
   }
 }
-// withValues(alpha: 0.3)
