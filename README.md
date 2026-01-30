@@ -2,7 +2,15 @@
 
 A simple and elegant weather application built with Flutter. This app provides real-time weather information for any city around the world. It's designed with a clean and user-friendly interface, making it easy to get the weather updates you need.
 
-![App Demo](assets/weather_app.gif)
+<p align="center">
+  <img src="assets/weather_app.gif" alt="Weather app demo" width="320" />
+</p>
+
+<p align="center">
+  <a href="https://flutter.dev"><img alt="Flutter" src="https://img.shields.io/badge/Flutter-Framework-02569B?logo=flutter&logoColor=white"></a>
+  <a href="https://dart.dev"><img alt="Dart" src="https://img.shields.io/badge/Dart-Language-0175C2?logo=dart&logoColor=white"></a>
+  <img alt="Platforms" src="https://img.shields.io/badge/Platforms-Android%20%7C%20iOS%20%7C%20Web%20%7C%20Desktop-success">
+</p>
 
 ## 🌟 Features
 
